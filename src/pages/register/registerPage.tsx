@@ -3,10 +3,16 @@ import { RegisterComponent } from '../../components/registerComponent/registerCo
 
 export const RegisterPage:React.FC = ()=>{
 
-  
     return (
         <>
-            <RegisterComponent></RegisterComponent>
+            <section className='register-section'>
+                <div className='register-form-title'>
+                    <h1>Hobbe</h1>
+                    <h2>Şimdi Kayıt Ol</h2>
+                </div>
+                <RegisterComponent></RegisterComponent>
+            </section>
+            
         </>
     )
 }

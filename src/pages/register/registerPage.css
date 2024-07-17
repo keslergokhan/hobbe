@@ -1,0 +1,17 @@
+.register-form{
+    min-width: 200px;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.register-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5em;
+}
+
+.register-form-title h1{
+    font-weight: bolder;
+    color:#0d6efd;
+}
