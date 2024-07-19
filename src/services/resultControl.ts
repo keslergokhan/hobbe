@@ -1,32 +1,38 @@
 
 
 export interface IResultControl{
-    isSuccess:boolean;
+    IsSuccess:boolean;
+    Error:unknown;
 
     setSucess():ResultControl
-
     setFail():ResultControl
+    setFailError(error:unknown):ResultControl
 }
 
 export interface IResultControlData<T> extends IResultControl
 {
-    data:T
-    setSucess():IResultControlData<T>
-
-    setFail():IResultControlData<T>
+    Data:T
+    setSucessData(data:T):IResultControlData<T>
 }
 
 export abstract class BaseResultControl implements IResultControl{
-    isSuccess:boolean;
+    IsSuccess:boolean;
+    Error: unknown;
 
     setSucess():ResultControl
     {
-        this.isSuccess = true;
+        this.IsSuccess = true;
         return this;
     }
 
     setFail():ResultControl{
-        this.isSuccess = false;
+        this.IsSuccess = false;
+        return this;
+    }
+    
+    setFailError(error:unknown):ResultControl{
+        this.setFail();
+        this.Error = error;
         return this;
     }
 }
@@ -44,17 +50,11 @@ extends BaseResultControl
 implements IResultControlData<T>
 
 {
-    data:T
-
-    setSucess():IResultControlData<T>
-    {
-        this.isSuccess = true;
+    Data:T
+    setSucessData(data:T):IResultControlData<T>{
+        this.IsSuccess = true;
+        this.Data = data;
         return this;
     }
-
-    setFail():IResultControlData<T>
-    {
-        this.isSuccess = false;
-        return this;
-    }
+    
 }

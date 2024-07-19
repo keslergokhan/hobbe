@@ -1,12 +1,18 @@
+import React from 'react'
 import { DefaultInput } from '../../formik/fields/defaultField'
 import {Formik,Form} from 'formik'
 import * as Bootstrap from 'react-bootstrap'
 import * as Yup from 'yup'
 import './registerComponent.css'
 import { FormConstantMesage } from '../../formik/constantMessage'
- 
+import { AuthService } from '../../services/authService'
+import { useResultControl } from '../../hooks/useResultControl'
+import { ToastType } from '../toastComponent/defaultToastComponent'
 
 export const RegisterComponent:React.FC = ()=>{
+
+    const [setToastHandler] = useResultControl();
+    const authService = new AuthService();
 
     const initialValues = {
         name:"",
@@ -23,14 +29,14 @@ export const RegisterComponent:React.FC = ()=>{
         name:Yup.string().required(FormConstantMesage.required()).min(3,FormConstantMesage.min(3)),
         surname:Yup.string().required(FormConstantMesage.required()).min(3,FormConstantMesage.min(3)),
         email:Yup.string().required(FormConstantMesage.required()).email(FormConstantMesage.email()),
-        phone:Yup.number().required(FormConstantMesage.required()).min(9,FormConstantMesage.min(9)),
+        phone:Yup.string().matches(FormConstantMesage.matches0_9(), FormConstantMesage.matches0_9Message()).required(FormConstantMesage.required()).min(9,FormConstantMesage.min(9)),
         password:Yup.string().required(FormConstantMesage.required()).min(6,FormConstantMesage.min(6)),
         passwordAgain:Yup.string().required(FormConstantMesage.required()).min(6,FormConstantMesage.min(6))
         .oneOf([Yup.ref("password")],FormConstantMesage.passwordError())
     });
 
-    const onSubmitHandler = ()=>{
-        console.log("başarılı");
+    const onSubmitHandler = async (value:any)=>{
+        setToastHandler({title : value.name,message : "test",type:ToastType.secondary});
     }
     
     return (
@@ -51,7 +57,7 @@ export const RegisterComponent:React.FC = ()=>{
                     </Bootstrap.Row>
 
                     <Bootstrap.Row>
-                        <DefaultInput id="phone" label="Phone" type="number" name="phone" placeholder="Telefon adresiniz"></DefaultInput>
+                        <DefaultInput id="phone" label="Phone" type="text" name="phone" placeholder="Telefon adresiniz"></DefaultInput>
                     </Bootstrap.Row>
 
                     <Bootstrap.Row>

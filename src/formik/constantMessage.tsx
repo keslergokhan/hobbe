@@ -26,5 +26,7 @@ export class FormConstantMesage{
      * @returns 
      */
     static email=():string=>"Lütfen geçerli bir e-posta adresi giriniz !";
+    static matches0_9=():RegExp=>/^[+]?[0-9\s]*$/;
+    static matches0_9Message=():string=>"Lütfen geçerli bir format giriniz !";
 }
 
