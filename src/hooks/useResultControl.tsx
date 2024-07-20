@@ -5,17 +5,21 @@ import { DefaultToastComponentProp } from "../components/toastComponent/defaultT
 import { Helpers } from "../services/helpersService";
 
 
+
 export const useResultControl = () =>{
     const {setToastList,toastList} = useContext(BaseContext);
 
     const setToastHandler = (x:DefaultToastComponentProp) => {
-        x.key = Helpers.getInstance().randomNumber(1,500);
-        setToastList([...toastList.filter(i=>i.title != x.title && i.message!=x.message),x]);
+        x.Key = Helpers.getInstance().randomNumber(1,9000);
+        
+        setToastList([...toastList,x]);
+        if(toastList.length > 5){
+            setToastList([]);
+        }
     }
 
-   
-    
+
     
 
-    return [setToastHandler]
+    return {setToastHandler}
 }

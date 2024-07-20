@@ -19,8 +19,6 @@ export const EmptyLayout:React.FC<EmptyLayoutProps> = (props:EmptyLayoutProps)=>
     return (
         <>
             {props.children}
-            <div className="toast-list">
-            </div>
         </>
     );
 }

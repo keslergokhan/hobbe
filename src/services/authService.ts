@@ -21,8 +21,10 @@ export class AuthService{
                 }
 
                 result.setSucessData(x);
+            }).catch(x=>{
+                result.setFailError(x);
             });
-        }catch(error){
+        }catch(error:any){
             result.setFailError(error);
         }
         

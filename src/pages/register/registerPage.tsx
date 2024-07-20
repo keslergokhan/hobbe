@@ -7,7 +7,6 @@ export const RegisterPage:React.FC = ()=>{
     return (
         <>
             <EmptyLayout>
-                <div id='aaa'></div>
                 <section className='register-section'>
                     <div className='register-form-title'>
                         <h1>Hobbe</h1>

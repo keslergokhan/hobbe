@@ -7,11 +7,10 @@ import './registerComponent.css'
 import { FormConstantMesage } from '../../formik/constantMessage'
 import { AuthService } from '../../services/authService'
 import { useResultControl } from '../../hooks/useResultControl'
-import { ToastType } from '../toastComponent/defaultToastComponent'
 
 export const RegisterComponent:React.FC = ()=>{
 
-    const [setToastHandler] = useResultControl();
+    const {setToastHandler} = useResultControl();
     const authService = new AuthService();
 
     const initialValues = {
@@ -36,7 +35,12 @@ export const RegisterComponent:React.FC = ()=>{
     });
 
     const onSubmitHandler = async (value:any)=>{
-        setToastHandler({title : value.name,message : "test",type:ToastType.secondary});
+        const result = await authService.createUserAsync(value.email,value.password);
+        
+        const title = (result.IsSuccess ? "Tebrikler !":"Üzgünüm !");
+        const message = (result.IsSuccess ? "Kayıt işlemi başarılı !":"Üzgünüm teknik bir problem yaşandı !");
+        
+        setToastHandler({IsSuccess:result.IsSuccess, Title:title,Message:message});
     }
     
     return (

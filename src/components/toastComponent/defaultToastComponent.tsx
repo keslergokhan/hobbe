@@ -2,37 +2,27 @@ import { useState } from "react";
 import { Toast } from "react-bootstrap";
 import './defaultToastComponent.css'
 
-export enum ToastType{
-    primary,
-    secondary,
-    success,
-    danger,
-    warning,
-    info,
-    light,
-    dark,
-}
+
 export interface DefaultToastComponentProp {
-    title:string;
-    message:string;
-    type:ToastType;
-    key?:number;
+    Title:string;
+    Message:string;
+    IsSuccess:boolean;
+    Key?:number;
 }
 
 export const DefaultToastComponent = (props:DefaultToastComponentProp)=>{
     const [state, setShow] = useState(true);
-  
     setTimeout(() => {
         setShow(false);
-    }, 2500);
+    }, 2800);
 
     return (
         <>
-            <Toast  show={state} onClose={()=>{setShow(false)}} className="default-toast" bg={ToastType[props.type]}>
+            <Toast key={props.Key} className="default-toast" show={state} onClose={()=>{setShow(false)}} bg={props.IsSuccess ? "primary":"danger"}>
                 <Toast.Header>
-                    <strong className="me-auto">{props.title}</strong>
+                    <strong className="me-auto">{props.Title}</strong>
                 </Toast.Header>
-                <Toast.Body>{props.title}</Toast.Body>
+                <Toast.Body>{props.Message}</Toast.Body>
             </Toast>
         </>
     );

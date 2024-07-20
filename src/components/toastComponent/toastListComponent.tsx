@@ -1,25 +1,16 @@
 import { DefaultToastComponent, DefaultToastComponentProp } from "./defaultToastComponent"
 import { BaseContext } from "../../context/baseContext"
 import { useContext } from "react"
-import { useEffect,useRef } from "react";
 
 
-export const ToastListComponent = ()=>{
+export const ToastListComponent = ():JSX.Element=>{
 
-    const {toastList,setToastList} = useContext(BaseContext);
-    const refItem = useRef();
-
-    useEffect(()=>{
-        
-        console.log(toastList);
-        
-    },[toastList])
-
+    const {toastList} = useContext(BaseContext);
     return (<>
-        {
-            toastList.map(
-            x=>(<DefaultToastComponent key={x.key} title={x.title} message={x.message} type={x.type}
-            ></DefaultToastComponent>))
-        }
+        <div className="list-toast">
+            {
+                toastList.map(x=>(<DefaultToastComponent key={x.Key} IsSuccess={x.IsSuccess} Key={x.Key} Title={x.Title} Message={x.Message} ></DefaultToastComponent>))
+            }
+        </div>
     </>)
 }
