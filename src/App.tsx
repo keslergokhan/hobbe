@@ -8,6 +8,7 @@ import { BaseContext } from './context/baseContext';
 import { Helpers } from './services/helpersService';
 import { DefaultToastComponentProp } from './components/toastComponent/defaultToastComponent';
 import { ToastListComponent } from './components/toastComponent/toastListComponent';
+import { LoginPage } from './pages/login/loginPage';
 
 function App() {
   const [toastList,setToastList] = useState<DefaultToastComponentProp[]>([]);
@@ -20,6 +21,7 @@ function App() {
       <BaseContext.Provider value={{toastList:toastList,setToastList:setToastList}}>
         <Routes>
           <Route path='/' element={<HomePage></HomePage>}></Route>
+          <Route path="/login" element={<LoginPage></LoginPage>}></Route>
           <Route path='/register' element={<RegisterPage></RegisterPage>}></Route>
         </Routes>
 

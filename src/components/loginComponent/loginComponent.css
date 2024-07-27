@@ -1,0 +1,13 @@
+.login-form{
+    min-width: 350px;
+}
+
+/* Ekran genişliği 600 pikselden küçükse */
+@media (max-width: 600px) {
+    .logo-form{
+        width: 100%;
+    }
+    .login-form{
+        min-width: 100% !important;
+    }
+}

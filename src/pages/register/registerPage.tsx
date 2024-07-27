@@ -1,19 +1,16 @@
 import './registerPage.css'
 import { RegisterComponent } from '../../components/registerComponent/registerComponent' 
 import { EmptyLayout } from '../../layouts/emptyLayout'
+import { LogoFormLayout } from '../../layouts/logos/logoFormLayout'
 
 export const RegisterPage:React.FC = ()=>{
 
     return (
         <>
             <EmptyLayout>
-                <section className='register-section'>
-                    <div className='register-form-title'>
-                        <h1>Hobbe</h1>
-                        <h2>Şimdi Kayıt Ol</h2>
-                    </div>
+                <LogoFormLayout title='Şimdi Kayıt Ol'>
                     <RegisterComponent></RegisterComponent>
-                </section>
+                </LogoFormLayout>
             </EmptyLayout>
         </>
     )

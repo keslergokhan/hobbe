@@ -7,13 +7,18 @@ import './registerComponent.css'
 import { FormConstantMesage } from '../../formik/constantMessage'
 import { AuthService } from '../../services/authService'
 import { useResultControl } from '../../hooks/useResultControl'
+import { FirebaseError } from 'firebase/app'
+import { RegisterInModel } from '../../Models/registerInModel'
+import { useNavigate } from 'react-router-dom'
 
 export const RegisterComponent:React.FC = ()=>{
 
     const {setToastHandler} = useResultControl();
+    const navigate = useNavigate();
+
     const authService = new AuthService();
 
-    const initialValues = {
+    const initialValues:RegisterInModel = {
         name:"",
         surname:"",
         email:"",
@@ -34,12 +39,26 @@ export const RegisterComponent:React.FC = ()=>{
         .oneOf([Yup.ref("password")],FormConstantMesage.passwordError())
     });
 
-    const onSubmitHandler = async (value:any)=>{
+    const onSubmitHandler = async (value:RegisterInModel)=>{
         const result = await authService.createUserAsync(value.email,value.password);
         
         const title = (result.IsSuccess ? "Tebrikler !":"Üzgünüm !");
-        const message = (result.IsSuccess ? "Kayıt işlemi başarılı !":"Üzgünüm teknik bir problem yaşandı !");
+        let message = (result.IsSuccess ? "Kayıt işlemi başarılı, giriş yapabilirsiniz.":"Üzgünüm teknik bir problem yaşandı !");
         
+
+        if(!result.IsSuccess){
+            const error = result.Error as FirebaseError;
+
+            if(error.code == "auth/email-already-in-use"){
+                message = `Üzgünüm, ${value.email} kullanılıyor !`;
+            }
+        }else{
+            setTimeout(() => {
+                navigate("/login");
+            }, 500);
+        }
+
+
         setToastHandler({IsSuccess:result.IsSuccess, Title:title,Message:message});
     }
     

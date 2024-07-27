@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Toast } from "react-bootstrap";
 import './defaultToastComponent.css'
 
@@ -10,7 +10,7 @@ export interface DefaultToastComponentProp {
     Key?:number;
 }
 
-export const DefaultToastComponent = (props:DefaultToastComponentProp)=>{
+export const DefaultToastComponent : React.FC<DefaultToastComponentProp> = (props:DefaultToastComponentProp)=>{
     const [state, setShow] = useState(true);
     setTimeout(() => {
         setShow(false);
