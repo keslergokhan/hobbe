@@ -6,8 +6,15 @@ import * as Bootstrap from 'react-bootstrap';
 import { FormConstantMesage } from "../../formik/constantMessage";
 import * as Yup from 'yup'
 import './loginComponent.css'
+import { useLoginControl } from "../../hooks/useLoginControl";
+import { AuthService } from "../../services/authService";
+import { useResultControl } from "../../hooks/useResultControl";
 
 export const LoginComponent: React.FC = () => {
+
+    const authService = new AuthService();
+    useLoginControl();
+    const {setToastHandler} = useResultControl();
 
     const validationSchema = Yup.object({
         email:Yup.string().required(FormConstantMesage.required()).email(FormConstantMesage.email()),
@@ -20,7 +27,14 @@ export const LoginComponent: React.FC = () => {
     }
 
     const onSubmitHandler = async (values:LoginInModel) =>{
-        console.log(values);
+        const signResult = await authService.signInUserAsync(values.email,values.password);
+
+        if(signResult.IsSuccess){
+            setToastHandler({IsSuccess:true,Title:"Tebrikler",Message:`Aramıza hoş geldiniz.`});
+        }else{
+            setToastHandler({IsSuccess:false,Title:"Dikkat !",Message:`Teknik bir problem yaşandı !`});
+        }
+
     }
 
     return (
