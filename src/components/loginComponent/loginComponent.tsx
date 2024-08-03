@@ -1,6 +1,6 @@
 import React from "react";
 import {Formik,Form} from 'formik'
-import { LoginInModel } from "../../Models/loginInModel";
+import { LoginInModel } from "../../models/loginInModel";
 import { DefaultInput } from "../../formik/fields/defaultField";
 import * as Bootstrap from 'react-bootstrap';
 import { FormConstantMesage } from "../../formik/constantMessage";

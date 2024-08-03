@@ -8,7 +8,7 @@ import { FormConstantMesage } from '../../formik/constantMessage'
 import { AuthService } from '../../services/authService'
 import { useResultControl } from '../../hooks/useResultControl'
 import { FirebaseError } from 'firebase/app'
-import { RegisterInModel } from '../../Models/registerInModel'
+import { RegisterInModel } from '../../models/registerInModel'
 import { useNavigate } from 'react-router-dom'
 
 export const RegisterComponent:React.FC = ()=>{

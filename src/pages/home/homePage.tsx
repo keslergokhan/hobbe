@@ -4,9 +4,7 @@ export const HomePage = ()=>{
     return (
         <>
             <DefaultLayout>
-                <div>
-                    Merhaba dünya
-                </div>
+                a
             </DefaultLayout>
         </>
     );

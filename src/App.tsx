@@ -11,10 +11,13 @@ import { ToastListComponent } from './components/toastComponent/toastListCompone
 import { LoginPage } from './pages/login/loginPage';
 import { UserCredential } from 'firebase/auth';
 import { LogautPage } from './pages/logautPage';
+import { useLoginControl } from './hooks/useLoginControl';
 
 function App() {
+  useLoginControl();
   const [toastList,setToastList] = useState<DefaultToastComponentProp[]>([]);
   const [user,setUser] = useState<UserCredential | null>(null);
+ 
 
 
   return (
@@ -30,7 +33,6 @@ function App() {
 
         <ToastListComponent></ToastListComponent>
       </BaseContext.Provider>
-      
       
     </>
   );
