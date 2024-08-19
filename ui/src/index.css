@@ -1,0 +1,31 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+a{
+    text-decoration: none;
+}
+body{
+    background-color: #ffffff;
+    background-image:  radial-gradient(#a7a7a7 0.9500000000000001px, transparent 0.9500000000000001px), radial-gradient(#a7a7a7 0.9500000000000001px, #ffffff 0.9500000000000001px);
+    background-size: 38px 38px;
+    background-position: 0 0,19px 19px;background-color: #ffffff;
+    background-image:  radial-gradient(#a7a7a7 0.7000000000000001px, transparent 0.7000000000000001px), radial-gradient(#a7a7a7 0.7000000000000001px, #ffffff 0.7000000000000001px);
+    background-size: 28px 28px;
+    background-position: 0 0,14px 14px;
+}
+.form-error-message{
+    color:red;
+}
+.form-label{
+    margin-bottom:1px !important;
+    font-weight: 400;
+}
+.form-button{
+    background:black;
+    border: solid 1px black;
+}
+.hoppe-mini{
+    font-weight: bolder;
+    color:#0d6efd;
+}

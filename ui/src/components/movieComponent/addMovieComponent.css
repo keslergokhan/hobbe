@@ -1,0 +1,26 @@
+.add-movie-component{
+}
+
+.add-movie-component__body{
+    overflow: hidden;
+    height: 0px;
+    transition: all 0.2s ease-out;
+    padding: 0px;
+}
+
+.add-movie-component__body--active{
+    height: 250px;
+    display: inline-block;
+}
+
+.add-movie-component__body__form{
+    padding-left: 16%;
+    padding-right: 16%;
+}
+
+@media only screen and (max-width: 600px) {
+    .add-movie-component__body__form{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}

@@ -1,0 +1,21 @@
+.list-toast {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.list-toast .toast{
+    margin-top: 10px;
+}
+.list-toast .bg-primary .toast-body{
+    color: white;
+    font-weight: 100;
+}
+.list-toast .bg-primary .toast-header strong{
+    color: black;
+    font-size: 16px;
+}
+.list-toast .bg-danger .toast-body{
+    color: white;
+    font-weight: 100;
+}
