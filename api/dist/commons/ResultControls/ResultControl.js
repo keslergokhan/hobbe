@@ -10,7 +10,12 @@ class BaseResultControl {
         this.IsSuccess = false;
     }
     FailSetException(error) {
-        this.Error = error;
+        if (error instanceof Error) {
+            this.Error = error;
+        }
+        else {
+            this.Error = new Error("Beklenmedik bir hata oluştu !");
+        }
     }
 }
 class ResultControl extends BaseResultControl {

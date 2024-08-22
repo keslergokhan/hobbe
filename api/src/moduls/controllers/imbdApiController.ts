@@ -3,16 +3,15 @@ import { ImbdHtmlReaderService } from "../../services/ImbdHtmlReaderService";
 
 export class ImbdApiController {
 
-    private imbdHtmlReaderService:ImbdHtmlReaderService;
+    public imbdHtmlReaderService:ImbdHtmlReaderService;
 
-    /**
-     *
-     */
     constructor() {
         this.imbdHtmlReaderService = new ImbdHtmlReaderService();
     }
 
-    imbdSearchMouve = (req:Request,res:Response):void => {
-        res.send(this.imbdHtmlReaderService.getAllReader());
+    public imbdSearchMouve = async (req:Request,res:Response):Promise<void> =>
+    {
+        const resultControl = await this.imbdHtmlReaderService.GetAllReader();
+        res.json(resultControl);
     }
 }

@@ -4,7 +4,7 @@ export interface IResultControl{
     Error:Error;
     Success():void;
     Fail():void;
-    FailSetException(error:Error):void
+    FailSetException(error:any):void
 }
 
 export interface IResultDataControl<T> extends IResultControl{

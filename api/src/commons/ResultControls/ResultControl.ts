@@ -13,8 +13,13 @@ abstract class BaseResultControl implements IResultControl
     Fail():void{
         this.IsSuccess = false
     }
-    FailSetException(error:Error):void{
-        this.Error = error;
+    FailSetException(error:any):void{
+        if(error instanceof Error){
+            this.Error = error;
+        }else{
+            this.Error = new Error("Beklenmedik bir hata oluştu !");
+        }
+        
     }
 
 }
